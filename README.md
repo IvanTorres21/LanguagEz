@@ -14,7 +14,8 @@ Para el desarrollo del proyecto se usarán varias tecnologías:
 ## ¿Cuáles son los contenidos de la web de Ionic?
 En la web de Ionic los administradores podrán hacer varias cosas, las más importantes siendo:
 - Creación de noticias que serán mostradas en la página de Inicio de la app.
-- Gestión de usuarios (banear, dar medallas, ver reviews y eliminar el texto de la misma)
+- Gestión de usuarios
+- Creación de lecciones
 - HomePage 
 
 ## ¿Cuáles son los contenidos de la app?
