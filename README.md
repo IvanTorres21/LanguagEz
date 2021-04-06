@@ -35,4 +35,4 @@ La aplicación contará con las siguientes funcionalidades:
 <img src="appDesign.png" width="256px">
 
 ## Diseño Ionic
-Still being done
+<img src="webDesign.png" width="256px">
