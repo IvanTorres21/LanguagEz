@@ -32,7 +32,7 @@ La aplicación contará con las siguientes funcionalidades:
 - Un tablón de noticias
 
 ## Diseño App
-<img src="appDesign.png" width="256px">
+<img src="appDesign.png" width="900px">
 
 ## Diseño Ionic
-<img src="webDesign.png" width="256px">
+<img src="webDesign.png" width="900px">
