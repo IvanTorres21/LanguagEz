@@ -36,3 +36,14 @@ La aplicación contará con las siguientes funcionalidades:
 
 ## Diseño Ionic
 <img src="webDesign.png" width="900px">
+
+## Revisiones
+
+### ¿Uso de MCERL? 
+El uso de MCERL no es nunca utilizado en la gran mayoría de estas aplicaciones, y por lo tanto no tengo pensado añadirlo. Solo contribuiría a un pensamiento incorrecto por parte del usuario. Este tipo de aplicaciones son útiles como apoyo general a los estudios de los lenguajes, no son capaces de sustituir a un curso completo de idioma. El objetivo es reforzar el aprendizaje del lenguaje de forma entretenida, sesiones cortas que puedes hacer mientras esperas a algo.
+
+### Funcionalidad de la lista de amigos
+La lista de amigos funciona como otro recurso de motivación para el usuario, siendo lo que puedes ver en el perfil de tus amigos sus medallas y nivel. Esto está hecho aposta para promover competitividad entre ellos y nada más, añadir funciones más socailes que eso provocaría que se desconcentrase demasiado (Por eso mismo no hay chat, ni estado, etc)
+
+### ¿Como funciona la evaluación?
+Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactamente igual que las lecciones (Se crearan desde la web como se crean las lecciones, excepto que se añadira un contador de "lecciones completadas", eso indicara la cantidad de lecciones completadas que necesita el usuario para poder acceder al examen). Una vez se pueda acceder al examen será exáctamente igual que la práctica de las lecciones pero contará con ejercicios relacionados con todo el temario dado. La puntuación se calculara en base a las respuestas correctas sobre 100.
