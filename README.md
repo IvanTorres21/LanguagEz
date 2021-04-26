@@ -1,6 +1,9 @@
 # LanguagEz
 La aplicación LanguagEz tiene como objetivo ayudar a los usuarios a aprender idiomas con lecciones variadas bien estructuradas y minijuegos para reforzar el conocimiento de forma entretenida.
 
+Repositorio api: https://github.com/IvanTorres21/LanguagEzApi
+Repositorio app: https://github.com/IvanTorres21/LanguagEzApp
+
 ## Descripción
 Los usuarios tendrán acceso a varias funcionalidades, la primera siendo la más importante serán las lecciones las cuales en lugar de seguir una plantilla establecida serán hechas dependiendo de como sea lo mejor para ellas. Además de eso contarán con minijuegos como el ahorcado o las parejas para reforzar su conocimiento. A eso se le añadirá acceso a un diccionario del lenguaje con las palabras usadas en las lecciones, las cuales podrán estudiar por lecciones; o puede que prefieran usar el diccionario personal, en el que podrán crear sus propias colecciones de palabras y estudiarlas.
 
@@ -47,3 +50,10 @@ La lista de amigos funciona como otro recurso de motivación para el usuario, si
 
 ### ¿Como funciona la evaluación?
 Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactamente igual que las lecciones (Se crearan desde la web como se crean las lecciones, excepto que se añadira un contador de "lecciones completadas", eso indicara la cantidad de lecciones completadas que necesita el usuario para poder acceder al examen). Una vez se pueda acceder al examen será exáctamente igual que la práctica de las lecciones pero contará con ejercicios relacionados con todo el temario dado. La puntuación se calculara en base a las respuestas correctas sobre 100.
+
+## Diario proyecto
+
+### 27/04
+- Se han creado los repositorios para cada parte de la app
+- Se han creado las migraciones de la base de datos
+- Se han creado los modelos de la base de datos
