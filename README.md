@@ -2,6 +2,7 @@
 La aplicación LanguagEz tiene como objetivo ayudar a los usuarios a aprender idiomas con lecciones variadas bien estructuradas y minijuegos para reforzar el conocimiento de forma entretenida.
 
 Repositorio api: https://github.com/IvanTorres21/LanguagEzApi
+
 Repositorio app: https://github.com/IvanTorres21/LanguagEzApp
 
 ## Descripción
