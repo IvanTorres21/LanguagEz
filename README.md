@@ -58,3 +58,6 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 - Se han creado los repositorios para cada parte de la app
 - Se han creado las migraciones de la base de datos
 - Se han creado los modelos de la base de datos
+
+### 28/04
+- Terminado login y signup en la API de Laravel
