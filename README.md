@@ -61,3 +61,7 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 
 ### 28/04
 - Terminado login y signup en la API de Laravel
+
+### 29/04
+- Terminado api badges
+- Terminado api friends
