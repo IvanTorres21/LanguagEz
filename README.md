@@ -69,3 +69,9 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 ### 30/04
 - Terminado api languages
 - Pequeños ajustes a otras apis
+
+### 01/05
+- Terminado api Lessons
+- Terminado api Dictionaries
+- Terminado api Notifications
+- Small adjustments to DB
