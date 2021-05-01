@@ -75,3 +75,9 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 - Terminado api Dictionaries
 - Terminado api Notifications
 - Small adjustments to DB
+
+### 01/05
+- Terminado api exercises
+- Terminado api lessons
+- Pequeños ajustes de rendimiento en controladores (eliminado foreach innecesarios)
+- Desplegada api en producción
