@@ -1,0 +1,7 @@
+{
+  "name": "LanguagEz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
