@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// Style for all submit buttons
+.blue_button {
+    background-color: #4969F5;
+    color: #FAFAFA;
+    padding: 1vh 10vw;
+    margin: 5vh 0vw 2vh 0vw;
+    border-radius: 5%;
+}
+
+// Style fo the login card
+.login_card {
+
+    margin: 5vw 10vw;
+    text-align: center;
+    align-content: center;
+    .login_title {
+        text-align: center;
+    }
+
+    ion-list {
+        margin-right: 0.5vw;
+        ion-item {
+            margin-bottom: 0vh;
+        }
+    }
+}
