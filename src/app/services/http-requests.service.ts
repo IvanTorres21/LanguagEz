@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
+import { DatabaseService } from '../services/database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class HttpRequestsService {
   base_url : string = "https://languagezapi.herokuapp.com/api";
   auth_token : string = "";
 
-  constructor(private http : HTTP) {
+  constructor(private http : HTTP, private db : DatabaseService) {
     this.prepareClient();
   }
 
@@ -18,6 +19,9 @@ export class HttpRequestsService {
    */
   private prepareClient() {
     this.http.setDataSerializer("json");
+    // Start Ionic storage and search for the auth token
+    this.db.init();
+    this.db.get('auth').then((value) => this.auth_token = value).catch((error) => console.error(error));
     //Get auth from local storage
     if(this.auth_token != "") {
       this.http.setHeader("languagezapi.herokuapp.com", "Authentication", this.auth_token);
