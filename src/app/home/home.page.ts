@@ -11,22 +11,31 @@ import { HttpRequestsService } from '../services/http-requests.service';
 export class HomePage {
 
 
-  constructor(private db : DatabaseService) {
+  constructor(private db : DatabaseService, private http : HttpRequestsService) {
     db.init();
   }
 
   public email : string;
   public password : string;
 
-  goLogin() {
+  async goLogin() {
     if(this.email.length > 3 && this.email.search("@") && this.password.length > 6) {
       var data = {
         email : this.email,
         password : this.password
       };
       console.log(JSON.parse(JSON.stringify(data)));
-      //TODO: Fix http injection, save auth token
-      //this.http.postRequest('login', JSON.parse(data.toString()));
+      console.log('Start');
+    
+      
+      await this.http.postRequest('login', JSON.parse(JSON.stringify(data))).subscribe(
+        (data) => {
+          this.db.set('auth', data['access_token'])
+          //Redirect to launchscreen
+        }
+      );
+      
+      
     }
   }
 
