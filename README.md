@@ -81,3 +81,7 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 - Terminado api lessons
 - Pequeños ajustes de rendimiento en controladores (eliminado foreach innecesarios)
 - Desplegada api en producción
+
+### 06/05
+- Terminado login web
+- Terminado creación de vistas
