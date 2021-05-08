@@ -16,63 +16,59 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'index',
+    path: 'languages/index',
     loadChildren: () => import('./pages/languages/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'add',
+    path: 'languages/add',
     loadChildren: () => import('./pages/languages/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'index',
+    path: 'lessons/index',
     loadChildren: () => import('./pages/lessons/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'add',
+    path: 'lessons/add',
     loadChildren: () => import('./pages/lessons/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'index',
+    path: 'exercise/index',
     loadChildren: () => import('./pages/exercise/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'add',
+    path: 'exercise/add',
     loadChildren: () => import('./pages/exercise/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'index',
+    path: 'tests/index',
     loadChildren: () => import('./pages/tests/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'add',
+    path: 'tests/add',
     loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'dictionary',
-    loadChildren: () => import('./pages/dictionary/dictionary.module').then( m => m.DictionaryPageModule)
-  },
-  {
-    path: 'index',
+    path: 'pages/index',
     loadChildren: () => import('./pages/dictionary/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'add',
+    path: 'pages/add',
     loadChildren: () => import('./pages/dictionary/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'view',
+    path: 'pages/view',
     loadChildren: () => import('./pages/dictionary/view/view.module').then( m => m.ViewPageModule)
   },
   {
-    path: 'view',
+    path: 'tests/view',
     loadChildren: () => import('./pages/tests/view/view.module').then( m => m.ViewPageModule)
   },
   {
-    path: 'view',
+    path: 'lessons/view',
     loadChildren: () => import('./pages/lessons/view/view.module').then( m => m.ViewPageModule)
   },
   {
-    path: 'view',
+    path: 'languages/view',
     loadChildren: () => import('./pages/languages/view/view.module').then( m => m.ViewPageModule)
   },
 ];
