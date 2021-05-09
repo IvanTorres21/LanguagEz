@@ -1,9 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>add</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img class="iconBtn" (click)="navigate('languages/index', undefined)" id="logo" src="../../../../assets/icon/favicon.png" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/graduation-hat.svg" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/book.svg" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/user.svg" alt="" width="30" height="30">
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <h1 class="title">Language</h1>
+      <br>
+      <br>
+      <h5 class="title">English name</h5>
+      <input type="text" [(ngModel)]="englishName">
+      <h5 class="title">Spanish name</h5>
+      <input type="text" [(ngModel)]="spanishName">
+      <h5 class="title">Image url</h5>
+      <input type="text" [(ngModel)]="image">
+      <br>
+      <br>
+      <br>
+      <div class="save" (click)="saveLanguage()">
+        <h6>Add Language</h6>
+        <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+      </div>
+    </div>
+  </div>
 </ion-content>

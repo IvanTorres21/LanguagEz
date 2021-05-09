@@ -12,37 +12,29 @@ export class HttpRequestsService {
   base_url : string = "https://languagezapi.herokuapp.com/api/";
   auth_token : string = "";
 
-  constructor(private http : HttpClient, private db : DatabaseService) {
-    this.prepareClient();
-  }
+  constructor(private http : HttpClient) {}
 
   /**
    * Sets up the http client
    */
-  private async prepareClient() {
-    // Start Ionic storage and search for the auth token
-    await this.db.init();
-    await this.db.get('auth').then((value) => this.auth_token = value).catch((error) => console.error(error));
-    //Get auth from local storage
-  }
 
   /**
    * Function that makes a post request to the api
    * @param url Url of the request
    * @param body data of the request
    */
-  public postRequest(url : string, body : JSON) {
+  public postRequest(url : string, body : JSON, auth : string) {
     console.log(this.base_url + url);
-    return this.http.post(this.base_url + url, body, {headers: {'Authorization' : this.auth_token ? this.auth_token : ''}});
+    return this.http.post(this.base_url + url, body, {headers: {'Authorization' : 'Bearer ' + auth == undefined ? auth : ''}});
   }
 
   /**
    * Function that makes a get request to the api
    * @param url Url of the request
    */
-   public async getRequest(url : string) {
+   public async getRequest(url : string, auth : string) {
     console.log(this.base_url + url);
-    return this.http.get(this.base_url + url, {headers: {'Authorization' : this.auth_token ? this.auth_token : ''}});
+    return this.http.get(this.base_url + url, {headers: {'Authorization' : auth == undefined ? auth : ''}});
   }
 
   /**
@@ -50,8 +42,8 @@ export class HttpRequestsService {
    * @param url Url of the request
    * @param body data of the request
    */
-   public async putRequest(url : string, body : JSON) {
+   public async putRequest(url : string, body : JSON, auth : string) {
     console.log(this.base_url + url);
-    return this.http.put(this.base_url + url, body, {headers: {'Authorization' : this.auth_token ? this.auth_token : ''}});
+    return this.http.put(this.base_url + url, body, {headers: {'Authorization' : auth == undefined ? auth : ''}});
   }
 }

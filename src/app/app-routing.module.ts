@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/languages/add/add.module').then( m => m.AddPageModule)
   },
   {
+    path: 'languages/add/:id',
+    loadChildren: () => import('./pages/languages/add/add.module').then( m => m.AddPageModule)
+  },
+  {
     path: 'lessons/index',
     loadChildren: () => import('./pages/lessons/index/index.module').then( m => m.IndexPageModule)
   },

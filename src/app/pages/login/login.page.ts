@@ -46,10 +46,8 @@ export class LoginPage  {
         email : this.email,
         password : this.password
       };
-      await this.http.postRequest('login', JSON.parse(JSON.stringify(data))).subscribe(
-        (data) => {
-          console.log(data);
-          
+      await this.http.postRequest('login', JSON.parse(JSON.stringify(data)), undefined).subscribe(
+        (data) => {        
           this.loading.dismiss();
           if(data['status_code'] == 200) {
             this.db.set('auth', data['access_token']);
