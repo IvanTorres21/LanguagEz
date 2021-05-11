@@ -56,6 +56,13 @@ export class IndexPage {
           this.failed = true;
        }
        this.loading.dismiss();
+     },
+     async (error) => {
+       if(error.status == 401) {
+         await this.db.set('auth', null);
+         this.loading.dismiss();
+         this.navigate('login', undefined);
+       }
      });
      
   }

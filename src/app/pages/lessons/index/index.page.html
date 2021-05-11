@@ -15,7 +15,7 @@
             <h1><b>{{language.name != undefined ? language.name['en'] : ''}}</b></h1>
         </div>
         <h3 class="title">Lessons</h3>
-        <div class="add" (click)="navigate('lessons/add', undefined)">
+        <div class="add" (click)="navigate('lessons/add', language.id)">
           <h5>Add Lesson</h5>
           <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
         </div>
@@ -26,14 +26,15 @@
             <h3>{{lesson.title['en']}}</h3>
           </div>
           <div>
-            <img (click)="navigate('lessons/add', language.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+            <img (click)="navigate('lessons/add', -lesson.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
             <img (click)="delete(lesson)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
           </div>
         </div>
       </ion-list>
-      <h3 class="title">Tests</h3>
-        <div class="add" (click)="navigate('tests/add', undefined)">
-          <h5>Add Lesson</h5>
+      <div class="topContent">
+        <h3 class="title">Tests</h3>
+        <div class="add" (click)="navigate('tests/add', language.id)">
+          <h5>Add Test</h5>
           <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
         </div>
       </div>
@@ -43,10 +44,11 @@
             <h3>{{test.title['en']}}</h3>
           </div>
           <div>
-            <img (click)="navigate('tests/add', language.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+            <img (click)="navigate('tests/add', -test.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
             <img (click)="delete(test)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
           </div>
         </div>
       </ion-list>
     </div>
+  </div>
 </ion-content>

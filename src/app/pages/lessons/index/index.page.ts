@@ -53,6 +53,7 @@ export class IndexPage {
      await (await this.http.postRequest('get_language_lessons', JSON.parse("{\"id\" : "+ this.id + "}") ,this.authToken)).subscribe((value) => {
        if(value['status_code'] == 200) { 
          this.language.name = JSON.parse(JSON.stringify(value['language']['name']));
+         this.language.id = value['language']['id'];
          this.language.image = value['language']['image'];
           this.helper = value['language']['lessons'];
           this.helper.forEach(element => {
@@ -61,11 +62,22 @@ export class IndexPage {
             lesson.theory = element['theory'];
             lesson.id = element['id'];
             this.lessons.push(lesson);
-          });
+          }
+          );
        } else {
           this.failed = true;
        }
-     });
+     },
+     async (error) => {
+      if(error.status == 401) {
+        await this.db.set('auth', null);
+        this.loading.dismiss();
+        this.navigate('login', undefined);
+      } else {
+              this.failed = true;
+            }
+            
+          });
      //Get tests from the DB
      await (await this.http.postRequest('get_tests', JSON.parse("{\"id\" : "+ this.id + "}") ,this.authToken)).subscribe((value) => {
       if(value['status_code'] == 200) { 
@@ -80,6 +92,16 @@ export class IndexPage {
          this.failed = true;
       }
       this.loading.dismiss();
+    },
+    async (error) => {
+      if(error.status == 401) {
+        await this.db.set('auth', null);
+        this.loading.dismiss();
+        this.navigate('login', undefined);
+      } else {
+        this.failed = true;
+      }
+      
     });
   }
   
