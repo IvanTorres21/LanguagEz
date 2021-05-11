@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatabaseService } from '../services/database.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -25,7 +25,10 @@ export class HttpRequestsService {
    */
   public postRequest(url : string, body : JSON, auth : string) {
     console.log(this.base_url + url);
-    return this.http.post(this.base_url + url, body, {headers: {'Authorization' : 'Bearer ' + auth == undefined ? auth : ''}});
+    console.log(body);
+    console.log(auth);
+    
+    return this.http.post(this.base_url + url, body, {headers: {'Authorization' : 'Bearer ' + auth}});
   }
 
   /**
@@ -34,7 +37,7 @@ export class HttpRequestsService {
    */
    public async getRequest(url : string, auth : string) {
     console.log(this.base_url + url);
-    return this.http.get(this.base_url + url, {headers: {'Authorization' : auth == undefined ? auth : ''}});
+    return this.http.get(this.base_url + url, {headers: {'Authorization' :'Bearer ' +  auth}});
   }
 
   /**
@@ -42,8 +45,8 @@ export class HttpRequestsService {
    * @param url Url of the request
    * @param body data of the request
    */
-   public async putRequest(url : string, body : JSON, auth : string) {
+   public async putRequest(url : string, body : string, auth : string) {
     console.log(this.base_url + url);
-    return this.http.put(this.base_url + url, body, {headers: {'Authorization' : auth == undefined ? auth : ''}});
+    return this.http.put(this.base_url + url, body, {headers: {'Authorization' : 'Bearer ' + auth}});
   }
 }

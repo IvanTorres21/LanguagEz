@@ -17,14 +17,14 @@
         </div>
       </div>
       <ion-list *ngFor="let language of languages">
-        <div class="card">
+        <div class="card" (click)="navigate('lessons/index', language.id)">
           <div>
             <img class="roundImg" src="{{language.image}}" width="40px" height="40px">
             <h3>{{language.name['en']}}</h3>
           </div>
           <div>
             <img (click)="navigate('languages/add', language.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
-            <img class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
+            <img (click)="delete(language)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
           </div>
         </div>
       </ion-list>

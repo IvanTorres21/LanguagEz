@@ -28,11 +28,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/languages/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'lessons/index',
+    path: 'lessons/index/:id',
     loadChildren: () => import('./pages/lessons/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'lessons/add',
+    path: 'lessons/add/:id',
     loadChildren: () => import('./pages/lessons/add/add.module').then( m => m.AddPageModule)
   },
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tests/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'tests/add',
+    path: 'tests/add/:id',
     loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
   },
   {
@@ -70,10 +70,6 @@ const routes: Routes = [
   {
     path: 'lessons/view',
     loadChildren: () => import('./pages/lessons/view/view.module').then( m => m.ViewPageModule)
-  },
-  {
-    path: 'languages/view',
-    loadChildren: () => import('./pages/languages/view/view.module').then( m => m.ViewPageModule)
   },
 ];
 

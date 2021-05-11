@@ -119,6 +119,14 @@ html {
 .main {
     display: flex;
     
+    .roundImgB {
+        border-radius: 50%;
+    }
+
+    .languageView {
+        margin: 10vh 0vw 5vh 10vw;
+    }
+
     // Sidebar for navigation
     .sidebar {
         display: flex;
