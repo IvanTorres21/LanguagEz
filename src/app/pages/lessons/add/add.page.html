@@ -12,18 +12,31 @@
       <h1 class="title">Lesson</h1>
       <br>
       <br>
-      <h5 class="title">English name</h5>
-      <input class="oneLine" type="text" >
-      <h5 class="title">Spanish name</h5>
-      <input class="oneLine" type="text" >
-      <h5 class="title">Image url</h5>
-      <input class="oneLine" type="text" >
-      <br>
-      <br>
-      <br>
-      <div class="save">
-        <h6>Add Language</h6>
-        <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+      <div class="half-divide">
+        <div class="left"> <!-- Left side of the divide -->
+          <h5 class="title">English title</h5>
+          <input [(ngModel)]="englishTitle" class="oneLine" type="text" >
+          <h5 class="title">Spanish title</h5>
+          <input  [(ngModel)]="spanishTitle" class="oneLine" type="text" >
+          <br>
+          <br>
+          <br>
+          <div class="save" (click)="saveLesson()">
+            <h6>Add Language</h6>
+            <img  class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+          </div>
+        </div>
+        <div class="right"> <!-- Right side of the divide -->
+          <h5 class="title">Theory</h5>
+          <div class="bigBox">
+            <div >
+              
+              <button [ngClass]="{'selected' : currLanguage=='en', 'languageBtn':  true}" (click)="changeLanguage('en')" id="en">English</button>
+              <button [ngClass]="{'selected' : currLanguage=='es', 'languageBtn': true}" (click)="changeLanguage('es')" id="es">Spanish</button>
+            </div>
+            <textarea class="theoryBox" type="text" [ngModel]="theory.get(currLanguage)" (ngModelChange)="theory.set(currLanguage, $event)"></textarea>
+          </div>
+        </div>
       </div>
     </div>
   </div>
