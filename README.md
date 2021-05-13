@@ -85,3 +85,12 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 ### 06/05
 - Terminado login web
 - Terminado creación de vistas
+
+### 10/05
+- Terminado languages (index, add, edit)
+- Terminado lessons (index)
+
+### 11/05
+- Terminado lessons (add, edit)
+- Arreglado problemas de peticiones http
+- Protegido rutas de admin
