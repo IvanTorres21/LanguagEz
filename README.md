@@ -94,3 +94,8 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 - Terminado lessons (add, edit)
 - Arreglado problemas de peticiones http
 - Protegido rutas de admin
+
+### 12/05
+- Terminado bases de los controladores
+- Todos los elementos visuales están listos
+- Arreglado problemas de formato de datos
