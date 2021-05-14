@@ -5,6 +5,8 @@ Repositorio api: https://github.com/IvanTorres21/LanguagEzApi
 
 Repositorio app: https://github.com/IvanTorres21/LanguagEzApp
 
+Video control: https://www.youtube.com/watch?v=CG--Ktpg4c4
+
 ## Descripción
 Los usuarios tendrán acceso a varias funcionalidades, la primera siendo la más importante serán las lecciones las cuales en lugar de seguir una plantilla establecida serán hechas dependiendo de como sea lo mejor para ellas. Además de eso contarán con minijuegos como el ahorcado o las parejas para reforzar su conocimiento. A eso se le añadirá acceso a un diccionario del lenguaje con las palabras usadas en las lecciones, las cuales podrán estudiar por lecciones; o puede que prefieran usar el diccionario personal, en el que podrán crear sus propias colecciones de palabras y estudiarlas.
 
