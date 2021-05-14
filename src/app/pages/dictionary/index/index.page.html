@@ -1,9 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>index</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img class="iconBtn" id="logo" src="../../../../assets/icon/favicon.png" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/graduation-hat.svg" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/book.svg" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/user.svg" alt="" width="30" height="30">
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <div class="topContent">
+        <h1 class="title">Dictionary</h1>
+      </div>
+      <ion-list *ngFor="let language of languages">
+        <div class="card" (click)="navigate('dictionary/view', language.id)">
+          <div>
+            <img class="roundImg" src="{{language.image}}" width="40px" height="40px">
+            <h3>{{language.name['en']}}</h3>
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

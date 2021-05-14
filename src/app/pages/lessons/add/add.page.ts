@@ -56,8 +56,8 @@ export class AddPage implements OnInit {
             this.loading.dismiss();
             this.englishTitle = data['lesson']['title']['en'];
             this.spanishTitle = data['lesson']['title']['es'];
-            this.theory.set('en',  data['lesson']['theory']['en']);
-            this.theory.set('es', data['lesson']['theory']['es']);
+            this.theory.set('en',  data['lesson']['theory']['en'].replace('"', '\\"'));
+            this.theory.set('es', data['lesson']['theory']['es'].replace('"', '\\"'));
           },
           async (error) => {
             if(error.status == 401) {
@@ -85,11 +85,7 @@ export class AddPage implements OnInit {
    * Checks if the input is correct and saves the language
    */
   async saveLesson() {
-    console.log('Gonna save?');
-    console.log(this.theory.get('en'));
-    
     if(this.englishTitle.length > 3 && this.spanishTitle.length > 3) {
-      console.log('Yay! saving!');
       
       // Prepare loading
       this.loading = await this.loadingC.create({
@@ -101,16 +97,16 @@ export class AddPage implements OnInit {
       if(Number.parseInt(this.id) > 0) { // New lesson
         this.title.set('en', this.englishTitle);
         this.title.set('es', this.spanishTitle);
-        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en') + "\", \"es\" : \""+ this.theory.get('es') + "\"}, \"id\" : " + this.id +"}";
+        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace('\n', '\\n') + "\", \"es\" : \""+ this.theory.get('es').replace('\n', '\\n') + "\"}, \"id\" : " + this.id.replace("-", "") +"}";
         console.log(this.body);     
       
          await this.http.postRequest('store_lesson', JSON.parse(this.body), this.authToken).subscribe(
           (data) => {        
             this.loading.dismiss();
             if(data['status_code'] == 200) {
-              this.navigate('lessons/index/', Number.parseInt(this.id));
+              this.navigate('lessons/index', Number.parseInt(this.id));
             } else {
-              this.alertFailedSaving('Failed to save language');
+              this.alertFailedSaving('Failed to save lesson');
             }
           },
           async (error) => {
@@ -126,14 +122,14 @@ export class AddPage implements OnInit {
       } else { // Update lesson
         this.title.set('en', this.englishTitle);
         this.title.set('es', this.spanishTitle); 
-        this.body = "{\"title\" : " + this.title + ", \"theory\" : " + this.theory +", \"id\" : " + this.id +"}";
+        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace('\n', '\\n') + "\", \"es\" : \""+ this.theory.get('es').replace('\n', '\\n') + "\"}, \"id\" : " + this.id +"}";
         await (await this.http.postRequest('update_lesson', JSON.parse(this.body), this.authToken)).subscribe(
           (data) => {        
             this.loading.dismiss();
             if(data['status_code'] == 200) {
-              this.navigate('lessons/index/', data['lesson']['languages_id']);
+              this.navigate('lessons/index', data['lesson']['languages_id']);
             } else {
-              this.alertFailedSaving('Failed to update language');
+              this.alertFailedSaving('Failed to update lesson');
             }
   
           },
@@ -142,7 +138,7 @@ export class AddPage implements OnInit {
               await this.db.set('auth', null);
               this.navigate('login', undefined);
             } else {
-              this.alertFailedSaving('Failed to update language');
+              this.alertFailedSaving('Failed to update lesson');
             }
             this.loading.dismiss();
           });   

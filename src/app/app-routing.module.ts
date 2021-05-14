@@ -44,31 +44,31 @@ const routes: Routes = [
     loadChildren: () => import('./pages/exercise/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'tests/index',
-    loadChildren: () => import('./pages/tests/index/index.module').then( m => m.IndexPageModule)
-  },
-  {
     path: 'tests/add/:id',
     loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'pages/index',
+    path: 'tests/add',
+    loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
+  },
+  {
+    path: 'dictionary/index',
     loadChildren: () => import('./pages/dictionary/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'pages/add',
+    path: 'dictionary/add/:id',
     loadChildren: () => import('./pages/dictionary/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'pages/view',
+    path: 'dictionary/view/:id',
     loadChildren: () => import('./pages/dictionary/view/view.module').then( m => m.ViewPageModule)
   },
   {
-    path: 'tests/view',
+    path: 'tests/view/:id',
     loadChildren: () => import('./pages/tests/view/view.module').then( m => m.ViewPageModule)
   },
   {
-    path: 'lessons/view',
+    path: 'lessons/view/:id',
     loadChildren: () => import('./pages/lessons/view/view.module').then( m => m.ViewPageModule)
   },
 ];

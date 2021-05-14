@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class HttpRequestsService {
 
-  base_url : string = "https://languagezapi.herokuapp.com/api/";
+  base_url : string = "http://127.0.0.1:8000/api/";
   auth_token : string = "";
 
   constructor(private http : HttpClient) {}

@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>view</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img class="iconBtn" id="logo" src="../../../../assets/icon/favicon.png" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/graduation-hat.svg" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/book.svg" alt="" width="30" height="30">
+      <img class="iconBtn" src="../../../../assets/icon/user.svg" alt="" width="30" height="30">
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <div class="topContent">
+        <h1 class="title">Dictionary</h1>
+        <div class="add" (click)="navigate('dictionary/add', dicId)">
+          <h5>Add Word</h5>
+          <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+        </div>
+      </div>
+      <ion-list *ngFor="let word of words">
+        <div class="card">
+          <div>
+            <h3>{{word.ogWord}}</h3>
+          </div>
+          <div>
+            <img (click)="navigate('dictionary/add', -word.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+            <img (click)="delete(word)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

@@ -36,6 +36,8 @@ export class IndexPage {
 
   async ionViewDidEnter() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.lessons = [];
+    this.tests = [];
     this.loading = await this.loadingC.create({
       message: 'Please wait...'
     });
@@ -63,10 +65,12 @@ export class IndexPage {
             lesson.id = element['id'];
             this.lessons.push(lesson);
           }
+          
           );
        } else {
           this.failed = true;
        }
+       console.log(this.lessons);
      },
      async (error) => {
       if(error.status == 401) {
@@ -81,10 +85,11 @@ export class IndexPage {
      //Get tests from the DB
      await (await this.http.postRequest('get_tests', JSON.parse("{\"id\" : "+ this.id + "}") ,this.authToken)).subscribe((value) => {
       if(value['status_code'] == 200) { 
+         this.helper = [];
          this.helper = value['lessons']['tests'];
          this.helper.forEach(element => {
            var test = new Lesson;
-           test.title = element['title'];
+           test.title = element['name'];
            test.id = element['id'];
            this.tests.push(test);
          });
@@ -92,6 +97,7 @@ export class IndexPage {
          this.failed = true;
       }
       this.loading.dismiss();
+      console.log(this.tests);
     },
     async (error) => {
       if(error.status == 401) {
@@ -103,19 +109,30 @@ export class IndexPage {
       }
       
     });
+
+    
+    
+    
+    
   }
   
 
-  // Deletes a language
-  async delete(lesson : Lesson) {
+  // Deletes a lesson
+  async delete(lesson : Lesson, isLesson : boolean) {
     this.loading = await this.loadingC.create({
       message: 'Please wait...'
     });
     this.loading.present();
-    await this.http.postRequest('delete_lesson', JSON.parse("{\"id\" : " + lesson.id +"}"), this.authToken).subscribe((data) => {
-      this.lessons = [];
-      this.initializeData();
-    });
+    if(isLesson) 
+      await this.http.postRequest('delete_lesson', JSON.parse("{\"id\" : " + lesson.id +"}"), this.authToken).subscribe((data) => {
+        this.lessons = [];
+        this.initializeData();
+      });
+    else 
+      await this.http.postRequest('delete_test', JSON.parse("{\"id\" : " + lesson.id +"}"), this.authToken).subscribe((data) => {
+        this.lessons = [];
+        this.initializeData();
+      });
   }
 
   // Manages all redirects

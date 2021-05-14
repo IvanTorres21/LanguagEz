@@ -1,9 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>view</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img class="iconBtn" id="logo" src="../../../../assets/icon/favicon.png" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('languages/index', undefined)" src="../../../../assets/icon/graduation-hat.svg" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('dictionary/index', undefined)" src="../../../../assets/icon/book.svg" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('notification/index', undefined)"  src="../../../../assets/icon/user.svg" alt="" width="30" height="30">
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <h1 class="title">{{englishTitle}}</h1>
+      <br>
+      <br>
+      <div class="half-divide">
+        <div class="left"> <!-- Left side of the divide -->
+        </div>
+        <div class="right"> <!-- Right side of the divide -->
+          <h5 class="title">Exercises</h5>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
