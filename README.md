@@ -99,3 +99,9 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 - Terminado bases de los controladores
 - Todos los elementos visuales están listos
 - Arreglado problemas de formato de datos
+
+### 13/05
+- Terminado lessons (all)
+- Terminado diccionarios (all)
+- Arreglado problemas api
+- Añadido rutas que faltaban api
