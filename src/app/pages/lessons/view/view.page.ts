@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { DatabaseService } from '../../../services/database.service';
 import { HttpRequestsService } from '../../../services/http-requests.service';
+import { Exercise } from '../../../Models/exercise';
 
 @Component({
   selector: 'app-view',
@@ -27,7 +28,9 @@ export class ViewPage implements OnInit {
   public theory : Map<string, string> = new Map;
   private authToken;
   private id : string;
+  public lesson_id : Number;
   public currLanguage : string;
+  public exercises : Exercise[] = [];
 
   ngOnInit() {
     this.theory.set('en', '');
@@ -50,6 +53,7 @@ export class ViewPage implements OnInit {
     this.currLanguage = 'en';
     // Get id
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
+    this.lesson_id = Number.parseInt(this.id);
     this.authToken = await this.db.get('auth');
     await (await this.http.getRequest('get_lesson/' + this.id, this.authToken)).subscribe(
       (data) => {
@@ -57,6 +61,7 @@ export class ViewPage implements OnInit {
         this.englishTitle = data['lesson']['title']['en'];
         this.theory.set('en',  data['lesson']['theory']['en'].replace('"', '\\"'));
         this.theory.set('es', data['lesson']['theory']['es'].replace('"', '\\"'));
+        this.exercises = data['lesson']['exercises'];
       },
       async (error) => {
         if(error.status == 401) {
@@ -78,7 +83,7 @@ export class ViewPage implements OnInit {
   }
   
   // Manages all redirects
-  navigate(route : string, id : number) {
+  navigate(route : string, id : Number) {
     this.router.navigateByUrl(`/${route}${id != undefined ? '/' + id: ''}`);
   }
 
@@ -99,4 +104,17 @@ export class ViewPage implements OnInit {
       });
       alert.present();
     }
+
+     // Deletes an exercise
+  async delete(exercise : Exercise) {
+    this.loading = await this.loadingC.create({
+      message: 'Please wait...'
+    });
+    this.loading.present();
+    await this.http.postRequest('delete_exercise', JSON.parse("{\"id\" : " + exercise.id +", \"lesson\" : " + true + "}"), this.authToken).subscribe((data) => {
+      this.exercises = [];
+      this.initializeData();
+      this.loading.dismiss();
+    });
+  }
 }

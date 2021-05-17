@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/languages/add/add.module').then( m => m.AddPageModule)
   },
   {
+    path: 'lessons/view/:id',
+    loadChildren: () => import('./pages/lessons/view/view.module').then( m => m.ViewPageModule)
+  },
+  {
     path: 'lessons/index/:id',
     loadChildren: () => import('./pages/lessons/index/index.module').then( m => m.IndexPageModule)
   },
@@ -36,20 +40,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/lessons/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'exercise/index',
-    loadChildren: () => import('./pages/exercise/index/index.module').then( m => m.IndexPageModule)
-  },
-  {
-    path: 'exercise/add',
+    path: 'exerciseL/add/:id',
     loadChildren: () => import('./pages/exercise/add/add.module').then( m => m.AddPageModule)
   },
   {
-    path: 'tests/add/:id',
-    loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
-  },
-  {
-    path: 'tests/add',
-    loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
+    path: 'exerciseT/add/:id',
+    loadChildren: () => import('./pages/exercise/add/add.module').then( m => m.AddPageModule)
   },
   {
     path: 'dictionary/index',
@@ -68,8 +64,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tests/view/view.module').then( m => m.ViewPageModule)
   },
   {
-    path: 'lessons/view/:id',
-    loadChildren: () => import('./pages/lessons/view/view.module').then( m => m.ViewPageModule)
+    path: 'tests/add/:id',
+    loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
   },
 ];
 

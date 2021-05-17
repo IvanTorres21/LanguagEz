@@ -24,8 +24,24 @@
           </div>
         </div>
         <div class="right"> <!-- Right side of the divide -->
-          <h5 class="title">Exercises</h5>
-          
+          <div class="topContent">
+            <h1 class="title">Exercises</h1>
+            <div class="add" (click)="navigate('exerciseL/add', lesson_id)">
+              <h5>Add Exercise</h5>
+              <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+            </div>
+          </div>
+          <ion-list *ngFor="let exercise of exercises">
+            <div class="card">
+              <div>
+                <h3>Ejercicios</h3>
+              </div>
+              <div>
+                <img (click)="navigate('exerciseL/add', -exercise.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+                <img (click)="delete(exercise)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
+              </div>
+            </div>
+          </ion-list>
         </div>
       </div>
     </div>

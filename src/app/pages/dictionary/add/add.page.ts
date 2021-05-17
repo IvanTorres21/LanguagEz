@@ -73,6 +73,9 @@ export class AddPage implements OnInit {
   async saveWord() {
     if(this.ogWord.length > 3 && this.prWord.length > 3) {
       // Show loading
+      this.loading = await this.loadingC.create({
+        message: 'Please wait...'
+      });
       await this.loading.present();
       // prepare data and send request      
       if(Number.parseInt(this.id) > 0) { // New word
@@ -96,7 +99,7 @@ export class AddPage implements OnInit {
           (data) => {        
             this.loading.dismiss();
             if(data['status_code'] == 200) {
-              this.navigate('dictionary/view', Number.parseInt(this.id));
+              this.navigate('dictionary/view', Number.parseInt(data['word']['languages_id']));
             } else {
               this.alertFailedSaving('Failed to update language');
             }
