@@ -1,3 +1,4 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
@@ -19,17 +20,36 @@ export class AddPage implements OnInit {
     private activatedRoute : ActivatedRoute) {
    }
   
+
   public loading;
-  public theory : Map<string, string> = new Map;
+  // Exercise variables
+  public og_word : Map<string, string> = new Map;
+  public correct_word : Map<string, string> = new Map;
+  public wrong_word :  Map<string, string> = new Map;
+  public sentence :  Map<string, string> = new Map;
+  public translation :  Map<string, string> = new Map;
+  public type : Number;
+
+  // Page data
   private authToken;
   private id : string;
+  private test : boolean;
   private body : string;
-  public type : Number;
+
+  
   public currLanguage : string;
 
   ngOnInit() {
-    this.theory.set('en', '');
-    this.theory.set('es', '');
+    this.og_word.set('en', '');
+    this.og_word.set('es', '');
+    this.correct_word.set('es', '');
+    this.correct_word.set('en', '');
+    this.wrong_word.set('es', '');
+    this.wrong_word.set('en', '');
+    this.sentence.set('es', '');
+    this.sentence.set('en', '');
+    this.translation.set('es', '');
+    this.translation.set('en', '');
   }
 
   ionViewDidEnter(){
@@ -45,26 +65,45 @@ export class AddPage implements OnInit {
     this.currLanguage = 'en';
     // Get id
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
+    this.test = this.router.url.substring(0, 11).endsWith('T/');
     this.authToken = await this.db.get('auth');
     if(this.id != undefined) { // Retrieve data if editing 
       this.loading.present();
-      if(Number.parseInt(this.id) < 0) { // If we are editing an already existing lesson it'll be negative
-        await (await this.http.getRequest('get_lesson/' + this.id.replace("-", ""), this.authToken)).subscribe(
-          (data) => {
-            this.loading.dismiss();
-            this.theory.set('en',  data['lesson']['theory']['en'].replace('"', '\\"'));
-            this.theory.set('es', data['lesson']['theory']['es'].replace('"', '\\"'));
-          },
-          async (error) => {
-            if(error.status == 401) {
-              await this.db.set('auth', null);
+      if(this.test) { //If the exercise belongs to a test
+        if(Number.parseInt(this.id) < 0) { // If we are editing an already existing exercise it'll be negative
+          await (await this.http.postRequest('get_exercise/',JSON.parse('{\"id\" : ' + this.id.replace('-', '') + ', \"lesson\" : '+ false +'}'), this.authToken)).subscribe(
+            (data) => {
               this.loading.dismiss();
-              this.navigate('login', undefined);
+              
+            },
+            async (error) => {
+              if(error.status == 401) {
+                await this.db.set('auth', null);
+                this.loading.dismiss();
+                this.navigate('login', undefined);
+              }
             }
-          }
-        );
-      } else {
-        this.loading.dismiss();
+          );
+        } else {
+          this.loading.dismiss();
+        }
+      } else { // IF the exercise belongs to a lesson
+        if(Number.parseInt(this.id) < 0) { // If we are editing an already existing exercise it'll be negative
+          await (await this.http.postRequest('get_exercise/',JSON.parse('{\"id\" : ' + this.id.replace('-', '') + ', \"lesson\" : '+ true +'}'), this.authToken)).subscribe(
+            (data) => {
+              this.loading.dismiss();
+            },
+            async (error) => {
+              if(error.status == 401) {
+                await this.db.set('auth', null);
+                this.loading.dismiss();
+                this.navigate('login', undefined);
+              }
+            }
+          );
+        } else {
+          this.loading.dismiss();
+        }
       }
     }
   }
@@ -89,9 +128,8 @@ export class AddPage implements OnInit {
   await this.loading.present();
   // prepare data and send request      
   if(Number.parseInt(this.id) > 0) { // New lesson
-    this.body = "{\"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace('\n', '\\n') + "\", \"es\" : \""+ this.theory.get('es').replace('\n', '\\n') + "\"}, \"id\" : " + this.id.replace("-", "") +"}";
-    console.log(this.body);     
-  
+     console.log(this.body);     
+    //TODO: SAVE EXERCISE
      await this.http.postRequest('store_lesson', JSON.parse(this.body), this.authToken).subscribe(
       (data) => {        
         this.loading.dismiss();
@@ -112,8 +150,7 @@ export class AddPage implements OnInit {
       }
     );     
   } else { // Update lesson
-    this.body = "{\"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace('\n', '\\n') + "\", \"es\" : \""+ this.theory.get('es').replace('\n', '\\n') + "\"}, \"id\" : " + this.id +"}";
-    await (await this.http.postRequest('update_lesson', JSON.parse(this.body), this.authToken)).subscribe(
+      await (await this.http.postRequest('update_lesson', JSON.parse(this.body), this.authToken)).subscribe(
       (data) => {        
         this.loading.dismiss();
         if(data['status_code'] == 200) {
