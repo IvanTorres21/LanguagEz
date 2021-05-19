@@ -40,6 +40,7 @@ export class AddPage implements OnInit {
   public currLanguage : string;
 
   ngOnInit() {
+    this.type = 1;
     this.og_word.set('en', '');
     this.og_word.set('es', '');
     this.correct_word.set('es', '');
@@ -53,7 +54,7 @@ export class AddPage implements OnInit {
   }
 
   ionViewDidEnter(){
-    //this.initializeData();
+    this.initializeData();
   }
 
    // Initializes elements
@@ -69,45 +70,40 @@ export class AddPage implements OnInit {
     this.authToken = await this.db.get('auth');
     if(this.id != undefined) { // Retrieve data if editing 
       this.loading.present();
-      if(this.test) { //If the exercise belongs to a test
-        if(Number.parseInt(this.id) < 0) { // If we are editing an already existing exercise it'll be negative
-          await (await this.http.postRequest('get_exercise/',JSON.parse('{\"id\" : ' + this.id.replace('-', '') + ', \"lesson\" : '+ false +'}'), this.authToken)).subscribe(
-            (data) => {
-              this.loading.dismiss();
-              
-            },
-            async (error) => {
-              if(error.status == 401) {
-                await this.db.set('auth', null);
-                this.loading.dismiss();
-                this.navigate('login', undefined);
-              }
+      if(Number.parseInt(this.id) < 0) { // If we are editing an already existing exercise it'll be negative
+        await (await this.http.postRequest('get_exercise/',JSON.parse('{\"id\" : ' + this.id.replace('-', '') + ', \"lesson\" : '+ !this.test +'}'), this.authToken)).subscribe(
+          (data) => {
+            this.loading.dismiss();
+            this.type = data['exercise']['type'];
+            if(this.type == 1) {
+              this.og_word.set('en', data['exercise']['og_word']['en']);
+              this.og_word.set('es', data['exercise']['og_word']['es']);
+              this.correct_word.set('en', data['exercise']['correct_word']['en']);
+              this.correct_word.set('es', data['exercise']['correct_word']['es']);
+              this.wrong_word.set('en', data['exercise']['wrong_word']['en']);
+              this.wrong_word.set('es', data['exercise']['wrong_word']['es']);
+            } else {
+              this.sentence.set('en', data['exercise']['sentence']['en']);
+              this.sentence.set('es', data['exercise']['sentence']['es']);
+              this.translation.set('en', data['exercise']['translation']['en']);
+              this.translation.set('es', data['exercise']['translation']['es']);
             }
-          );
-        } else {
-          this.loading.dismiss();
-        }
-      } else { // IF the exercise belongs to a lesson
-        if(Number.parseInt(this.id) < 0) { // If we are editing an already existing exercise it'll be negative
-          await (await this.http.postRequest('get_exercise/',JSON.parse('{\"id\" : ' + this.id.replace('-', '') + ', \"lesson\" : '+ true +'}'), this.authToken)).subscribe(
-            (data) => {
+            
+            
+          },
+          async (error) => {
+            if(error.status == 401) {
+              await this.db.set('auth', null);
               this.loading.dismiss();
-            },
-            async (error) => {
-              if(error.status == 401) {
-                await this.db.set('auth', null);
-                this.loading.dismiss();
-                this.navigate('login', undefined);
-              }
+              this.navigate('login', undefined);
             }
-          );
-        } else {
-          this.loading.dismiss();
-        }
+          }
+        );
+      } else {
+        this.loading.dismiss();
       }
     }
   }
-
 
   /**
    * Change between languages
@@ -126,15 +122,21 @@ export class AddPage implements OnInit {
   });
   // Show loading
   await this.loading.present();
-  // prepare data and send request      
-  if(Number.parseInt(this.id) > 0) { // New lesson
-     console.log(this.body);     
-    //TODO: SAVE EXERCISE
-     await this.http.postRequest('store_lesson', JSON.parse(this.body), this.authToken).subscribe(
+  // prepare data and send request   
+  this.body = "{\"type\" : " + this.type + ", \"sentence\": " + "{\"en\" : \"" + this.sentence.get('en') + "\" ,\"es\": \"" + this.sentence.get('es') + "\"}, " +
+   "\"translation\" :  " + "{\"en\" : \"" + this.translation.get('en') + "\" ,\"es\": \"" + this.translation.get('es') + "\"}, "  +
+   "\"og_word\" :  " + "{\"en\" : \"" + this.og_word.get('en') + "\" ,\"es\": \"" + this.og_word.get('es') + "\"}, " +
+   "\"correct_word\" :  " + "{\"en\" : \"" + this.correct_word.get('en') + "\" ,\"es\": \"" + this.correct_word.get('es') + "\"}, " +
+   "\"wrong_word\" :  " + "{\"en\" : \"" + this.wrong_word.get('en') + "\" ,\"es\": \"" + this.wrong_word.get('es') + "\"}, \"lesson\" : " + !this.test + ", ";   
+  if(Number.parseInt(this.id) > 0) { // New exercise
+    this.body += "\"id\" : " + this.id + "}";
+    console.log(this.body);
+    
+     await this.http.postRequest('store_exercise', JSON.parse(this.body), this.authToken).subscribe(
       (data) => {        
         this.loading.dismiss();
         if(data['status_code'] == 200) {
-          this.navigate('lessons/index', Number.parseInt(this.id));
+          this.navigate('lessons/view', Number.parseInt(this.id));
         } else {
           this.alertFailedSaving('Failed to save lesson');
         }
@@ -149,12 +151,17 @@ export class AddPage implements OnInit {
         this.loading.dismiss();
       }
     );     
-  } else { // Update lesson
-      await (await this.http.postRequest('update_lesson', JSON.parse(this.body), this.authToken)).subscribe(
+  } else { // Update exercise
+    this.body += "\"id\" : " + this.id.replace('-', '') + "}";
+      await (await this.http.postRequest('update_exercise', JSON.parse(this.body), this.authToken)).subscribe(
       (data) => {        
         this.loading.dismiss();
         if(data['status_code'] == 200) {
-          this.navigate('lessons/index', data['lesson']['languages_id']);
+          if(this.test)
+            this.navigate('lessons/view', data['exercise']['tests_id']);
+          else
+            this.navigate('lessons/view', data['exercise']['languages_id']);
+          
         } else {
           this.alertFailedSaving('Failed to update lesson');
         }
