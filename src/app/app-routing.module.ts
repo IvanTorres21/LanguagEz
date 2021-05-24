@@ -67,6 +67,18 @@ const routes: Routes = [
     path: 'tests/add/:id',
     loadChildren: () => import('./pages/tests/add/add.module').then( m => m.AddPageModule)
   },
+  {
+    path: 'notification/index',
+    loadChildren: () => import('./pages/notifications/index/index.module').then( m => m.IndexPageModule)
+  },
+  {
+    path: 'notification/add/:id',
+    loadChildren: () => import('./pages/notifications/add/add.module').then( m => m.AddPageModule)
+  },
+  {
+    path: 'notification/add',
+    loadChildren: () => import('./pages/notifications/add/add.module').then( m => m.AddPageModule)
+  },
 ];
 
 @NgModule({

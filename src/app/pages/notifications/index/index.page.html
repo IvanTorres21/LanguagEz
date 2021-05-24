@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img class="iconBtn" id="logo" src="../../../../assets/icon/favicon.png" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('languages/index', undefined)" src="../../../../assets/icon/graduation-hat.svg" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('dictionary/index', undefined)" src="../../../../assets/icon/book.svg" alt="" width="30" height="30">
+      <img class="iconBtn" (click)="navigate('notification/index', undefined)"  src="../../../../assets/icon/user.svg" alt="" width="30" height="30">
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <div class="topContent">
+        <h1 class="title">Notifications</h1>
+        <div class="add" (click)="navigate('notification/add', undefined)">
+          <h5>Add Notification</h5>
+          <img class="iconBtn" src="../../../../assets/icon/more.svg" alt="" width="20" height="20">
+        </div>
+      </div>
+      <ion-list *ngFor="let notification of notifications">
+        <div class="card">
+          <div>
+            <h3>{{notification.title['en']}}</h3>
+          </div>
+          <div>
+            <img (click)="navigate('notification/add', notification.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
+            <img (click)="delete(notification)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

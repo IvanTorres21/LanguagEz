@@ -160,7 +160,7 @@ export class AddPage implements OnInit {
           if(this.test)
             this.navigate('lessons/view', data['exercise']['tests_id']);
           else
-            this.navigate('lessons/view', data['exercise']['languages_id']);
+            this.navigate('lessons/view', data['exercise']['lesson_id']);
           
         } else {
           this.alertFailedSaving('Failed to update lesson');
