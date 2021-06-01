@@ -110,3 +110,11 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 
 ### 24/05
 - Terminado por completo parte web ionic excepto pequeños retoques
+
+### 31/05
+- Terminado vistas principales aplicacion
+- Terminado drawer
+
+### 1/06
+- Terminado login
+- Terminado Signup
