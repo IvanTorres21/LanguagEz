@@ -118,3 +118,7 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 ### 1/06
 - Terminado login
 - Terminado Signup
+
+### 2/06
+- Pequeños ajuste a API
+- UserRepository y UserController
