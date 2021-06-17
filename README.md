@@ -14,6 +14,7 @@ Enlace web (ionic): http://95.179.195.218:8100/login [preguntadme por slack dato
 Enlace landing: https://ivantorres21.github.io/LanguagEzLanding/
 
 Enlace video flutter app : https://www.youtube.com/watch?v=DH-AsvNKqL8
+
 Enlace video ionic : https://www.youtube.com/watch?v=e1iHLB1so64
 
 ## Descripción
