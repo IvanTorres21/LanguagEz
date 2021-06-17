@@ -21,11 +21,12 @@
         </div>
       </div>
       <ion-list *ngFor="let lesson of lessons">
-        <div class="card" (click)="navigate('lessons/view', language.id)">
+        <div class="card">
           <div>
             <h3>{{lesson.title['en']}}</h3>
           </div>
           <div>
+            <img (click)="navigate('lessons/view', language.id)" class="iconBtn" src="../../../../assets/icon/eye.svg" alt="" width="30" height="30">
             <img (click)="navigate('lessons/add', -lesson.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
             <img (click)="delete(lesson, true)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
           </div>
@@ -39,11 +40,12 @@
         </div>
       </div>
       <ion-list *ngFor="let test of tests">
-        <div class="card" (click)="navigate('tests/view', test.id)">
+        <div class="card">
           <div>
             <h3>{{test.title['en']}}</h3>
           </div>
           <div>
+            <img (click)="navigate('tests/view', test.id)" class="iconBtn" src="../../../../assets/icon/eye.svg" alt="" width="30" height="30">
             <img (click)="navigate('tests/add', -test.id)" class="iconBtn" src="../../../../assets/icon/edit-button.svg" alt="" width="30" height="30">
             <img (click)="delete(test, false)" class="iconBtn" src="../../../../assets/icon/garbage.svg" alt="" width="30" height="30">
           </div>
