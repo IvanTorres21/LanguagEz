@@ -1,0 +1,154 @@
+/* line 1, Structure.scss */
+body {
+  display: grid;
+  grid-row: 1fr 1fr 1fr; }
+
+/* line 4, Main.scss */
+* {
+  margin: 0;
+  padding: 0; }
+
+/* line 9, Main.scss */
+html {
+  background-color: #FAFAFA; }
+
+/* line 14, Main.scss */
+body {
+  background-image: url("data:image/svg+xml, %3Csvg%20width%3D%22411%22%20height%3D%22179%22%20viewBox%3D%220%200%20411%20179%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M140.5%20105.764C72%2050.2636%201%20177.263%20-18%20178.763C-13.5%20126.597%20-4.8%2017.2635%20-6%20-2.73648C-7.18011%20-22.4049%20287.159%20-29.8649%20441.8%20-22.1811C445.293%20-32.6195%20447.776%20-43.2683%20449.5%20-53.6351V-131.28C449.5%20-142.03%20457.335%20-100.744%20449.5%20-53.6351V-21.7796C446.975%20-21.9177%20444.407%20-22.0516%20441.8%20-22.1811C427.145%2021.6226%20394.715%2061.7205%20326%2061.7205C235%2050.2205%20209%20161.264%20140.5%20105.764Z%22%20fill%3D%22%233A53C2%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed; }
+  /* line 20, Main.scss */
+  body p {
+    text-align: center;
+    color: #222222; }
+
+/* line 27, Main.scss */
+header {
+  height: 80px;
+  line-height: 80px;
+  text-align: center; }
+  /* line 32, Main.scss */
+  header h1 {
+    color: white; }
+  /* line 36, Main.scss */
+  header img {
+    margin-top: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vw; }
+
+/* line 45, Main.scss */
+nav {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  margin-top: 20%;
+  text-align: center;
+  height: 70px;
+  overflow: hidden;
+  transition: height 1s ease-in; }
+  /* line 55, Main.scss */
+  nav div {
+    height: 0px;
+    line-height: 30px;
+    width: 90%;
+    margin: 5px auto;
+    font-size: large; }
+  /* line 65, Main.scss */
+  nav a.login {
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    width: 90%;
+    margin: 5px auto;
+    font-size: large;
+    background-color: #4969F5;
+    color: #FAFAFA;
+    box-shadow: #384478 2px 2px 4px;
+    border-radius: 12px; }
+    /* line 77, Main.scss */
+    nav a.login :active {
+      background-color: #6e89ff; }
+
+/* line 84, Main.scss */
+main {
+  margin: 0px 10%; }
+  /* line 86, Main.scss */
+  main h1 {
+    text-align: center;
+    margin-bottom: 20px; }
+  /* line 90, Main.scss */
+  main p {
+    font-size: large;
+    margin-bottom: 20px; }
+    /* line 93, Main.scss */
+    main p a {
+      text-decoration: none; }
+  /* line 98, Main.scss */
+  main .row {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0 4px; }
+    /* line 103, Main.scss */
+    main .row .column {
+      flex: 100%;
+      max-width: 100%; }
+      /* line 107, Main.scss */
+      main .row .column img {
+        margin-bottom: 5vh;
+        vertical-align: middle;
+        width: 100%; }
+  /* line 115, Main.scss */
+  main .video {
+    display: block; }
+
+/* line 121, Main.scss */
+footer {
+  margin-top: 10px;
+  padding: 20px;
+  text-align: center; }
+
+@media screen and (min-width: 800px) {
+  /* line 6, MediaQuery.scss */
+  main .row .column {
+    flex: 100%;
+    max-width: 100%;
+    padding: 0 4px; }
+    /* line 10, MediaQuery.scss */
+    main .row .column img {
+      margin-bottom: 5vh;
+      vertical-align: middle;
+      width: 33%; }
+  /* line 17, MediaQuery.scss */
+  main .video {
+    display: none; }
+  /* line 25, MediaQuery.scss */
+  nav a.login {
+    width: 30%;
+    margin: 5px 5vw auto auto; } }
+
+@media screen and (min-width: 768px) {
+  /* line 36, MediaQuery.scss */
+  body {
+    grid-template-rows: min-content min-content min-content min-content;
+    grid-template-columns: 100%;
+    grid-template-areas: "a a" "b b" "c c" "e e"; }
+  /* line 46, MediaQuery.scss */
+  header {
+    grid-area: a; }
+  /* line 47, MediaQuery.scss */
+  nav {
+    grid-area: b; }
+  /* line 48, MediaQuery.scss */
+  main {
+    grid-area: c; }
+  /* line 49, MediaQuery.scss */
+  footer {
+    grid-area: e; } }
+
+@media screen and (min-width: 600px) {
+  /* line 57, MediaQuery.scss */
+  .column {
+    flex: 50%;
+    max-width: 50%; } }

@@ -1,0 +1,128 @@
+@import "Structure.scss";
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #FAFAFA;
+}
+
+// Body
+body {
+    background-image: url("data:image/svg+xml, %3Csvg%20width%3D%22411%22%20height%3D%22179%22%20viewBox%3D%220%200%20411%20179%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M140.5%20105.764C72%2050.2636%201%20177.263%20-18%20178.763C-13.5%20126.597%20-4.8%2017.2635%20-6%20-2.73648C-7.18011%20-22.4049%20287.159%20-29.8649%20441.8%20-22.1811C445.293%20-32.6195%20447.776%20-43.2683%20449.5%20-53.6351V-131.28C449.5%20-142.03%20457.335%20-100.744%20449.5%20-53.6351V-21.7796C446.975%20-21.9177%20444.407%20-22.0516%20441.8%20-22.1811C427.145%2021.6226%20394.715%2061.7205%20326%2061.7205C235%2050.2205%20209%20161.264%20140.5%20105.764Z%22%20fill%3D%22%233A53C2%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+
+    p {
+        text-align: center;
+        color: #222222;
+    }
+}
+
+// Header
+header {
+    height: 80px;
+    line-height: 80px; // Aligns the text to the center of the header
+    text-align: center;
+    
+    h1 {
+
+        color: white;
+    }
+    img {
+        margin-top: 2vh;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20vw;
+    }
+}
+
+// Navbar
+nav {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    margin-top: 20%;
+    text-align: center;
+    height: 70px;
+    overflow: hidden;
+    transition: height 1s ease-in;
+    // Navbar elements
+    div {
+        height: 0px;
+        line-height: 30px;
+        width: 90%;
+        margin: 5px auto;
+        font-size: large;
+    }
+
+    
+    // Login button
+    a.login {
+        text-decoration: none;
+        height: 30px;
+        line-height: 30px;
+        width: 90%;
+        margin: 5px auto;
+        font-size: large;
+        background-color: #4969F5;
+        color: #FAFAFA;
+        box-shadow: #384478 2px 2px 4px ;
+        border-radius: 12px;
+
+        :active {
+            background-color: #6e89ff;
+        }
+    }
+}
+
+// Main content
+main {
+    margin: 0px 10%;
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: large;
+        margin-bottom: 20px;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-wrap:nowrap;
+        padding: 0 4px;
+
+        .column {
+            flex: 100%;
+            max-width: 100%;
+    
+            img {
+                margin-bottom: 5vh;
+                vertical-align: middle;
+                width: 100%;
+              }    
+          }
+      } 
+
+    .video {
+        display: block;
+    }
+}
+
+// Footer
+footer {
+
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+@import "MediaQuery.scss";

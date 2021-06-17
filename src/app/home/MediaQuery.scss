@@ -1,0 +1,61 @@
+
+ // Two columns 
+ @media screen and (min-width: 800px) {
+   main {
+    .row {
+        .column {
+            flex: 100%;
+            max-width: 100%;
+            padding: 0 4px;
+            img {
+                margin-bottom: 5vh;
+                vertical-align: middle;
+                width: 33%;
+            } 
+        }
+    }
+    .video {
+        display: none;
+    }
+   }
+   
+    // Navbar
+    nav {
+        // Login button
+        a.login {
+            width: 30%;
+            margin: 5px 5vw auto auto;
+        }
+    }
+    // Due to video aspect ratio it can't be properly sized on desktop, so we hide it
+    
+}
+  
+
+@media screen and (min-width: 768px) {
+    body {
+        grid-template-rows: min-content min-content min-content min-content;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "a a"
+            "b b"
+            "c c"
+            "e e";
+    }
+    // Defining grid-area for the web elements
+    header { grid-area: a }
+    nav { grid-area: b }
+    main { grid-area: c }
+    footer { grid-area: e }
+
+}
+
+
+@media screen and (min-width: 600px) {
+
+    // One Column
+    .column {
+        flex: 50%;
+        max-width: 50%;
+      }
+}
