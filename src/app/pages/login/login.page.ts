@@ -37,7 +37,7 @@ export class LoginPage  {
    * Try to login
    */
   async goLogin() {
-    if(this.email.length > 3 && this.email.search("@") && this.password.length > 6) {
+    if(this.email.length > 3 && this.email.search("@") && this.password.length > 5) {
       this.loading = await this.loadingC.create({
         message: 'Please wait...'
       });

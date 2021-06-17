@@ -71,7 +71,7 @@ export class AddPage implements OnInit {
    * Checks if the input is correct and saves the word
    */
   async saveWord() {
-    if(this.ogWord.length > 3 && this.prWord.length > 3) {
+    if(this.ogWord.length > 0 && this.prWord.length > 0) {
       // Show loading
       this.loading = await this.loadingC.create({
         message: 'Please wait...'

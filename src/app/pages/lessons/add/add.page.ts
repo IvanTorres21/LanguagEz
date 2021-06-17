@@ -94,11 +94,12 @@ export class AddPage implements OnInit {
       // Show loading
       await this.loading.present();
       // prepare data and send request      
+      console.log(this.theory.get('en').replace(/\r|\n|\r/g, ' '));
       if(Number.parseInt(this.id) > 0) { // New lesson
         this.title.set('en', this.englishTitle);
         this.title.set('es', this.spanishTitle);
-        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace('\n', '\\n') + "\", \"es\" : \""+ this.theory.get('es').replace('\n', '\\n') + "\"}, \"id\" : " + this.id.replace("-", "") +"}";
-        console.log(this.body);     
+        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace(/\r|\n|\r/g, ' ') + "\", \"es\" : \""+ this.theory.get('es').replace(/\r|\n|\r/g, ' ') + "\"}, \"id\" : " + this.id.replace("-", "") +"}";
+        console.log(JSON.stringify(JSON.parse(this.body)));     
       
          await this.http.postRequest('store_lesson', JSON.parse(this.body), this.authToken).subscribe(
           (data) => {        
@@ -122,7 +123,7 @@ export class AddPage implements OnInit {
       } else { // Update lesson
         this.title.set('en', this.englishTitle);
         this.title.set('es', this.spanishTitle); 
-        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace('\n', '\\n') + "\", \"es\" : \""+ this.theory.get('es').replace('\n', '\\n') + "\"}, \"id\" : " + this.id +"}";
+        this.body = "{\"title\" : " + "{\"en\" : \"" + this.title.get('en') + "\", \"es\" : \""+ this.title.get('es') + "\"} , \"theory\" :" + "{\"en\" : \"" + this.theory.get('en').replace(/\r|\n|\r/g, ' ') + "\", \"es\" : \""+ this.theory.get('es').replace(/\r|\n|\r/g, ' ') + "\"}, \"id\" : " + this.id.replace("-", "") +"}";
         await (await this.http.postRequest('update_lesson', JSON.parse(this.body), this.authToken)).subscribe(
           (data) => {        
             this.loading.dismiss();
