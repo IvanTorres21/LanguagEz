@@ -14,7 +14,7 @@ Enlace web (ionic): http://95.179.195.218:8100/login [preguntadme por slack dato
 Enlace landing: https://ivantorres21.github.io/LanguagEzLanding/
 
 Enlace video flutter app : https://www.youtube.com/watch?v=DH-AsvNKqL8
-Enlace video ionic :(subiendose)
+Enlace video ionic : https://www.youtube.com/watch?v=e1iHLB1so64
 
 ## Descripción
 Los usuarios tendrán acceso a varias funcionalidades, la primera siendo la más importante serán las lecciones las cuales en lugar de seguir una plantilla establecida serán hechas dependiendo de como sea lo mejor para ellas. Además de eso contarán con minijuegos como el ahorcado o las parejas para reforzar su conocimiento. A eso se le añadirá acceso a un diccionario del lenguaje con las palabras usadas en las lecciones, las cuales podrán estudiar por lecciones; o puede que prefieran usar el diccionario personal, en el que podrán crear sus propias colecciones de palabras y estudiarlas.
