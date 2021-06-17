@@ -107,3 +107,18 @@ Cada cierto número de lecciones se desbloqueá un examen. Esto funciona exactam
 - Terminado diccionarios (all)
 - Arreglado problemas api
 - Añadido rutas que faltaban api
+
+### 24/05
+- Terminado por completo parte web ionic excepto pequeños retoques
+
+### 31/05
+- Terminado vistas principales aplicacion
+- Terminado drawer
+
+### 1/06
+- Terminado login
+- Terminado Signup
+
+### 2/06
+- Pequeños ajuste a API
+- UserRepository y UserController
