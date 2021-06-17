@@ -9,7 +9,7 @@ Video control: https://www.youtube.com/watch?v=CG--Ktpg4c4
 
 Enlace apk (flutter): https://github.com/IvanTorres21/LanguagEzApp/releases/tag/v1.0
 
-Enlace web (ionic): http://95.179.195.218:8100/ [Lleva a una página vacía con un botón para ir al login, preguntadme por slack datos de inicio de sesión que es solo para admin]
+Enlace web (ionic): http://95.179.195.218:8100/login [preguntadme por slack datos de inicio de sesión que es solo para admin]
 
 ## Descripción
 Los usuarios tendrán acceso a varias funcionalidades, la primera siendo la más importante serán las lecciones las cuales en lugar de seguir una plantilla establecida serán hechas dependiendo de como sea lo mejor para ellas. Además de eso contarán con minijuegos como el ahorcado o las parejas para reforzar su conocimiento. A eso se le añadirá acceso a un diccionario del lenguaje con las palabras usadas en las lecciones, las cuales podrán estudiar por lecciones; o puede que prefieran usar el diccionario personal, en el que podrán crear sus propias colecciones de palabras y estudiarlas.
